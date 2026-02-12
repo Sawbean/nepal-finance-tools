@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Calculator - Nepal Finance Tools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 { text-align: center; }
+        form { margin-top: 20px; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input[type="number"] { width: 100%; padding: 8px; margin-top: 5px; }
+        input[type="submit"] { margin-top: 20px; padding: 10px 15px; font-size: 16px; }
+        .result { margin-top: 20px; background-color: #f2f2f2; padding: 15px; border-radius: 5px; }
+        a { display: inline-block; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Loan Calculator</h1>
+    <form method="POST">
+        <label>Total Loan Amount (in Rs)</label>
+        <input type="number" name="principal" placeholder="Enter the full loan amount" required>
+
+        <label>Down Payment (in Rs, optional)</label>
+        <input type="number" name="down_payment" placeholder="Enter down payment if any, else 0">
+
+        <label>Annual Interest Rate (%)</label>
+        <input type="number" name="rate" step="0.01" placeholder="Example: 10 for 10%" required>
+
+        <label>Loan Tenure (in Years)</label>
+        <input type="number" name="years" placeholder="Number of years to repay" required>
+
+        <input type="submit" value="Calculate EMI">
+    </form>
+
+    {% if emi %}
+        <div class="result">
+            <h2>Results:</h2>
+            <p><strong>Loan Amount after Down Payment:</strong> Rs {{ principal_after_down }}</p>
+            <p><strong>Monthly EMI:</strong> Rs {{ emi }}</p>
+            <p><strong>Total Payment:</strong> Rs {{ total_payment }}</p>
+            <p><strong>Total Interest Paid:</strong> Rs {{ total_interest }}</p>
+        </div>
+    {% endif %}
+
+    <a href="/">← Back to Home</a>
+</body>
+</html>
