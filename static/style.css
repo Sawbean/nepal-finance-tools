@@ -45,13 +45,13 @@ nav {
 nav a {
     margin: 0 15px;
     text-decoration: none;
-    color: #004aad;
+    color: white;   /* change this */
     font-weight: bold;
     transition: 0.3s;
 }
 
 nav a:hover {
-    color: #2980b9;
+    color: #ffd700;   /* gold hover effect */
 }
 
 /* Forms */
