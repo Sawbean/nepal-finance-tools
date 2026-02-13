@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>EMI Calculator - Nepal Finance Tools</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <h1>EMI Calculator</h1>
-    <form method="POST">
-        <label>Loan Amount (in Rs)</label>
-        <input type="number" name="principal" placeholder="Enter the total loan amount" required>
+{% extends "base.html" %}
 
-        <label>Annual Interest Rate (%)</label>
-        <input type="number" name="rate" step="0.01" placeholder="Example: 10 for 10%" required>
+{% block title %}EMI Calculator{% endblock %}
 
-        <label>Repayment Period (in Years)</label>
-        <input type="number" name="years" placeholder="How many years to repay?" required>
+{% block content %}
+<h2>EMI Calculator</h2>
+<form method="POST">
+    <label>Loan Amount (in Rs)</label>
+    <input type="number" name="principal" placeholder="Enter the total loan amount" required>
 
-        <input type="submit" value="Calculate EMI">
-    </form>
+    <label>Annual Interest Rate (%)</label>
+    <input type="number" name="rate" step="0.01" placeholder="Example: 10 for 10%" required>
 
-    {% if emi %}
-        <div class="result">
-            <h2>Results:</h2>
-            <p><strong>Monthly EMI:</strong> Rs {{ emi }}</p>
-            <p><strong>Total Payment:</strong> Rs {{ total_payment }}</p>
-            <p><strong>Total Interest Paid:</strong> Rs {{ total_interest }}</p>
-        </div>
-    {% endif %}
+    <label>Repayment Period (in Years)</label>
+    <input type="number" name="years" placeholder="How many years to repay?" required>
 
-    <a href="/">← Back to Home</a>
-</body>
-</html>
+    <input type="submit" value="Calculate EMI">
+</form>
+
+{% if emi %}
+<div class="result">
+    <h2>Results:</h2>
+    <p><strong>Monthly EMI:</strong> Rs {{ emi }}</p>
+    <p><strong>Total Payment:</strong> Rs {{ total_payment }}</p>
+    <p><strong>Total Interest Paid:</strong> Rs {{ total_interest }}</p>
+</div>
+{% endif %}
+{% endblock %}

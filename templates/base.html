@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Nepal Finance Tools{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>Nepal Finance Tools</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/emi">EMI Calculator</a>
+        <a href="/loan">Loan Calculator</a>
+        <a href="/fuel">Fuel Cost Calculator</a>
+    </nav>
+</header>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<footer>
+    &copy; 2026 Nepal Finance Tools | Made with Python & Flask
+</footer>
+</body>
+</html>

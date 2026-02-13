@@ -1,84 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Nepal Finance Tools</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #004aad;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        main {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #004aad;
-        }
-        .tools {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        .tool {
-            padding: 15px;
-            background-color: #e6f0ff;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        .tool a {
-            text-decoration: none;
-            color: #004aad;
-            display: block;
-        }
-        .tool:hover {
-            background-color: #cce0ff;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Nepal Finance Tools</h1>
-        <p>Simple calculators for everyday finance</p>
-    </header>
+{% extends "base.html" %}
 
-    <main>
-        <h2>Select a Tool</h2>
-        <div class="tools">
-            <div class="tool"><a href="/emi">EMI Calculator</a></div>
-            <div class="tool"><a href="/loan">Loan Calculator</a></div>
-            <div class="tool"><a href="/fuel">Fuel Cost Calculator</a></div>
-        </div>
-    </main>
+{% block title %}Nepal Finance Tools{% endblock %}
 
-    <footer>
-        &copy; 2026 Nepal Finance Tools | Made with Python & Flask
-    </footer>
-</body>
-</html>
+{% block content %}
+<h2>Select a Tool</h2>
+<div class="tools">
+    <div class="tool"><a href="/emi">EMI Calculator</a></div>
+    <div class="tool"><a href="/loan">Loan Calculator</a></div>
+    <div class="tool"><a href="/fuel">Fuel Cost Calculator</a></div>
+</div>
+{% endblock %}

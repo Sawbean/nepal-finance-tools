@@ -1,45 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Fuel Cost Calculator - Nepal Finance Tools</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-        }
-        h1 { text-align: center; }
-        form { margin-top: 20px; }
-        label { display: block; margin-top: 15px; font-weight: bold; }
-        input[type="number"] { width: 100%; padding: 8px; margin-top: 5px; }
-        input[type="submit"] { margin-top: 20px; padding: 10px 15px; font-size: 16px; }
-        .result { margin-top: 20px; background-color: #f2f2f2; padding: 15px; border-radius: 5px; }
-        a { display: inline-block; margin-top: 20px; }
-    </style>
-</head>
-<body>
-    <h1>Fuel Cost Calculator</h1>
-    <form method="POST">
-        <label>Distance to Travel (km)</label>
-        <input type="number" name="distance" placeholder="Enter distance in km" required>
+{% extends "base.html" %}
 
-        <label>Vehicle Mileage (km per liter)</label>
-        <input type="number" name="mileage" placeholder="How many km your vehicle runs per liter" required>
+{% block title %}Fuel Cost Calculator{% endblock %}
 
-        <label>Fuel Price (Rs per liter)</label>
-        <input type="number" name="price" placeholder="Current fuel price per liter" required>
+{% block content %}
+<h2>Fuel Cost Calculator</h2>
+<form method="POST">
+    <label>Distance to Travel (km)</label>
+    <input type="number" name="distance" placeholder="Enter distance in km" required>
 
-        <input type="submit" value="Calculate Fuel Cost">
-    </form>
+    <label>Vehicle Mileage (km per liter)</label>
+    <input type="number" name="mileage" placeholder="How many km your vehicle runs per liter" required>
 
-    {% if total_cost %}
-        <div class="result">
-            <h2>Results:</h2>
-            <p><strong>Total Fuel Cost:</strong> Rs {{ total_cost }}</p>
-        </div>
-    {% endif %}
+    <label>Fuel Price (Rs per liter)</label>
+    <input type="number" name="price" placeholder="Current fuel price per liter" required>
 
-    <a href="/">← Back to Home</a>
-</body>
-</html>
+    <input type="submit" value="Calculate Fuel Cost">
+</form>
+
+{% if total_cost %}
+<div class="result">
+    <p><strong>Total Fuel Cost:</strong> Rs {{ total_cost }}</p>
+</div>
+{% endif %}
+{% endblock %}
