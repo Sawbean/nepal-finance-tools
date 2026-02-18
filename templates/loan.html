@@ -18,9 +18,9 @@
     <h3>📊 Loan Summary</h3>
 
     <div class="input-summary">
-        <p><strong>Loan Amount:</strong> Rs. {{ principal }}</p>
-        <p><strong>Down Payment:</strong> Rs. {{ down_payment or 0 }}</p>
-        <p><strong>Amount after Down Payment:</strong> Rs. {{ principal_after_down }}</p>
+        <p><strong>Loan Amount:</strong> Rs. {{ principal | nep_currency }}</p>
+        <p><strong>Down Payment:</strong> Rs. {{ (down_payment or 0) | nep_currency }}</p>
+        <p><strong>Amount after Down Payment:</strong> Rs. {{ principal_after_down | nep_currency }}</p>
         <p><strong>Interest Rate:</strong> {{ rate }}%</p>
         <p><strong>Duration:</strong> {{ years }} years</p>
     </div>
@@ -28,9 +28,9 @@
     <hr>
 
     <div class="calculation-result">
-        <p><strong>Monthly EMI:</strong> Rs. {{ emi }}</p>
-        <p><strong>Total Payment:</strong> Rs. {{ total_payment }}</p>
-        <p><strong>Total Interest:</strong> Rs. {{ total_interest }}</p>
+        <p><strong>Monthly EMI:</strong> Rs. {{ emi | nep_currency }}</p>
+        <p><strong>Total Payment:</strong> Rs. {{ total_payment | nep_currency }}</p>
+        <p><strong>Total Interest:</strong> Rs. {{ total_interest | nep_currency }}</p>
     </div>
 </div>
 {% endif %}

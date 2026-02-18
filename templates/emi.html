@@ -25,9 +25,9 @@
     <hr>
 
     <div class="calculation-result">
-        <p><strong>Monthly EMI:</strong> Rs. {{ emi }}</p>
-        <p><strong>Total Payment:</strong> Rs. {{ total_payment }}</p>
-        <p><strong>Total Interest:</strong> Rs. {{ total_interest }}</p>
+        <p><strong>Monthly EMI:</strong> Rs. {{ emi | nep_currency }}</p>
+        <p><strong>Total Payment:</strong> Rs. {{ total_payment | nep_currency }}</p>
+        <p><strong>Total Interest:</strong> Rs. {{ total_interest | nep_currency }}</p>
     </div>
 </div>
 {% endif %}

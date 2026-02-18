@@ -2,6 +2,33 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+def nepali_currency(value):
+    if value is None:
+        return ""
+
+    value = int(round(value))
+    s = str(value)
+
+    if len(s) <= 3:
+        return s
+
+    last_three = s[-3:]
+    remaining = s[:-3]
+
+    parts = []
+    while len(remaining) > 2:
+        parts.insert(0, remaining[-2:])
+        remaining = remaining[:-2]
+
+    if remaining:
+        parts.insert(0, remaining)
+
+    return ",".join(parts) + "," + last_three
+
+
+app.jinja_env.filters['nep_currency'] = nepali_currency
+
+
 @app.route("/")
 def home():
     return render_template("index.html")
