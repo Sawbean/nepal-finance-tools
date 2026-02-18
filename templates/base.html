@@ -2,17 +2,20 @@
 <html>
 <head>
     <title>{% block title %}Nepal Finance Tools{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3">
+
 </head>
 <body>
 <header>
     <h1>Nepal Finance Tools</h1>
     <nav>
-        <a href="/">Home</a>
-        <a href="/emi">EMI Calculator</a>
-        <a href="/loan">Loan Calculator</a>
-        <a href="/fuel">Fuel Cost Calculator</a>
-    </nav>
+    <a href="/">🏠 Home</a>
+    <a href="/emi">💰 EMI</a>
+    <a href="/loan">🏦 Loan</a>
+    <a href="/fuel">⛽ Fuel</a>
+</nav>
+
 </header>
 
 <div class="container">
