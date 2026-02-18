@@ -2,8 +2,20 @@
 {% block title %}EMI Calculator{% endblock %}
 
 {% block content %}
-
 <h2>💰 EMI Calculator</h2>
+
+<!-- Flash errors -->
+{% with messages = get_flashed_messages(category_filter=["error"]) %}
+  {% if messages %}
+    <div class="error-box">
+      <ul>
+        {% for msg in messages %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endwith %}
 
 <form method="POST" class="form-box">
     <input type="number" name="principal" placeholder="Loan Amount (Rs)" value="{{ principal or '' }}" required>
@@ -17,7 +29,7 @@
     <h3>📊 EMI Summary</h3>
 
     <div class="input-summary">
-        <p><strong>Loan Amount:</strong> Rs. {{ principal }}</p>
+        <p><strong>Loan Amount:</strong> Rs. {{ principal | nep_currency }}</p>
         <p><strong>Interest Rate:</strong> {{ rate }}%</p>
         <p><strong>Duration:</strong> {{ years }} years</p>
     </div>
@@ -31,5 +43,4 @@
     </div>
 </div>
 {% endif %}
-
 {% endblock %}

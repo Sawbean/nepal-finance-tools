@@ -3,32 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>{% block title %}Nepal Finance Tools{% endblock %}</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <header>
-    <div class="header-inner">
-        <h1>Nepal Finance Tools</h1>
-
-        <nav>
-            <a href="/">🏠 Home</a>
-            <a href="/emi">💰 EMI</a>
-            <a href="/loan">🏦 Loan</a>
-            <a href="/fuel">⛽ Fuel</a>
-        </nav>
-
-        <button id="darkToggle" class="theme-btn">🌙</button>
-    </div>
+    <h1>Nepal Finance Tools</h1>
+    <nav>
+        <a href="/">🏠 Home</a>
+        <a href="/emi">💰 EMI</a>
+        <a href="/loan">🏦 Loan</a>
+        <a href="/fuel">⛽ Fuel</a>
+        <button id="darkToggle">🌙</button>
+    </nav>
 </header>
 
-<main class="container">
+<div class="container">
     {% block content %}{% endblock %}
-</main>
+</div>
 
 <footer>
     &copy; 2026 Nepal Finance Tools | Built with Flask
@@ -40,15 +34,16 @@ const toggleBtn = document.getElementById("darkToggle");
 // Load saved theme
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
-    toggleBtn.textContent = "☀️";
 }
 
+// Toggle dark mode
 toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark");
-    const isDark = document.body.classList.contains("dark");
-
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    toggleBtn.textContent = isDark ? "☀️" : "🌙";
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
 });
 </script>
 

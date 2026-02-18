@@ -1,26 +1,35 @@
 {% extends "base.html" %}
-{% block title %}Loan Calculator{% endblock %}
+{% block title %}EMI Calculator{% endblock %}
 
 {% block content %}
+<h2>💰 EMI Calculator</h2>
 
-<h2>🏦 Loan Calculator</h2>
+<!-- Flash errors -->
+{% with messages = get_flashed_messages(category_filter=["error"]) %}
+  {% if messages %}
+    <div class="error-box">
+      <ul>
+        {% for msg in messages %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endwith %}
 
 <form method="POST" class="form-box">
-    <input type="number" name="principal" placeholder="Total Loan Amount (Rs)" value="{{ principal or '' }}" required>
-    <input type="number" name="down_payment" placeholder="Down Payment (optional)" value="{{ down_payment or '' }}">
+    <input type="number" name="principal" placeholder="Loan Amount (Rs)" value="{{ principal or '' }}" required>
     <input type="number" step="0.01" name="rate" placeholder="Interest Rate (%)" value="{{ rate or '' }}" required>
-    <input type="number" name="years" placeholder="Loan Duration (Years)" value="{{ years or '' }}" required>
+    <input type="number" name="years" placeholder="Duration (Years)" value="{{ years or '' }}" required>
     <button type="submit">Calculate</button>
 </form>
 
 {% if emi %}
 <div class="result-box">
-    <h3>📊 Loan Summary</h3>
+    <h3>📊 EMI Summary</h3>
 
     <div class="input-summary">
         <p><strong>Loan Amount:</strong> Rs. {{ principal | nep_currency }}</p>
-        <p><strong>Down Payment:</strong> Rs. {{ (down_payment or 0) | nep_currency }}</p>
-        <p><strong>Amount after Down Payment:</strong> Rs. {{ principal_after_down | nep_currency }}</p>
         <p><strong>Interest Rate:</strong> {{ rate }}%</p>
         <p><strong>Duration:</strong> {{ years }} years</p>
     </div>
@@ -34,5 +43,4 @@
     </div>
 </div>
 {% endif %}
-
 {% endblock %}

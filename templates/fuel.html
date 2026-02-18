@@ -2,13 +2,25 @@
 {% block title %}Fuel Cost Calculator{% endblock %}
 
 {% block content %}
-
 <h2>⛽ Fuel Cost Calculator</h2>
 
+<!-- Flash errors -->
+{% with messages = get_flashed_messages(category_filter=["error"]) %}
+  {% if messages %}
+    <div class="error-box">
+      <ul>
+        {% for msg in messages %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endwith %}
+
 <form method="POST" class="form-box">
-    <input type="number" name="distance" placeholder="Distance to Travel (km)" value="{{ distance or '' }}" required>
-    <input type="number" name="mileage" placeholder="Vehicle Mileage (km/l)" value="{{ mileage or '' }}" required>
-    <input type="number" name="price" placeholder="Fuel Price (Rs per liter)" value="{{ price or '' }}" required>
+    <input type="number" name="distance" placeholder="Distance (km)" value="{{ distance or '' }}" required>
+    <input type="number" step="0.01" name="mileage" placeholder="Mileage (km per litre)" value="{{ mileage or '' }}" required>
+    <input type="number" step="0.01" name="price" placeholder="Fuel Price (Rs per litre)" value="{{ price or '' }}" required>
     <button type="submit">Calculate</button>
 </form>
 
@@ -18,8 +30,8 @@
 
     <div class="input-summary">
         <p><strong>Distance:</strong> {{ distance }} km</p>
-        <p><strong>Mileage:</strong> {{ mileage }} km/l</p>
-        <p><strong>Fuel Price:</strong> Rs. {{ price | nep_currency }} per liter</p>
+        <p><strong>Mileage:</strong> {{ mileage }} km/litre</p>
+        <p><strong>Fuel Price:</strong> Rs. {{ price | nep_currency }}</p>
     </div>
 
     <hr>
@@ -29,5 +41,4 @@
     </div>
 </div>
 {% endif %}
-
 {% endblock %}

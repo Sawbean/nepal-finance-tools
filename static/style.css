@@ -1,6 +1,4 @@
-/* =====================
-   RESET & VARIABLES
-===================== */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -8,64 +6,33 @@
     font-family: 'Roboto', sans-serif;
 }
 
-:root {
-    --bg: #f4f7fb;
-    --card: #ffffff;
-    --text: #333;
-    --primary: #004aad;
-    --accent: #0066ff;
-    --border: #e0e0e0;
-}
-
-body.dark {
-    --bg: #121212;
-    --card: #1e1e1e;
-    --text: #eeeeee;
-    --primary: #4da3ff;
-    --accent: #6fb6ff;
-    --border: #333;
-}
-
-/* =====================
-   BODY
-===================== */
+/* BODY */
 body {
-    background: linear-gradient(135deg, var(--bg), #eef2ff);
-    color: var(--text);
+    background: linear-gradient(135deg, #f4f7fb, #eef2ff);
+    color: #333;
     min-height: 100vh;
     transition: background 0.3s, color 0.3s;
 }
 
-/* =====================
-   HEADER
-===================== */
+/* HEADER */
 header {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: linear-gradient(135deg, #004aad, #0066ff);
     color: white;
-    padding: 20px;
-}
-
-.header-inner {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    padding: 25px 15px;
+    text-align: center;
 }
 
 header h1 {
-    font-size: 26px;
+    font-size: 28px;
+    margin-bottom: 10px;
 }
 
-/* =====================
-   NAV
-===================== */
+/* NAV */
 nav {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -82,43 +49,41 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* Dark mode button */
-.theme-btn {
-    background: transparent;
-    border: 2px solid white;
-    color: white;
-    border-radius: 50%;
-    padding: 6px 10px;
+nav button {
+    background: rgba(255,255,255,0.25);
+    border: none;
+    border-radius: 20px;
+    padding: 6px 12px;
     cursor: pointer;
     font-size: 16px;
+    transition: all 0.3s ease;
 }
 
-/* =====================
-   CONTAINER
-===================== */
+nav button:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
+}
+
+/* CONTAINER */
 .container {
     max-width: 900px;
     margin: 30px auto;
-    background: var(--card);
+    background: white;
     padding: 30px;
     border-radius: 16px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     animation: fadeUp 0.6s ease;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* =====================
-   HEADINGS
-===================== */
+/* HEADINGS */
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: var(--primary);
+    color: #004aad;
 }
 
-/* =====================
-   FORM
-===================== */
+/* FORM */
 .form-box {
     max-width: 420px;
     margin: auto;
@@ -130,17 +95,16 @@ h2 {
 .form-box input {
     padding: 12px;
     border-radius: 10px;
-    border: 1px solid var(--border);
+    border: 1px solid #ccc;
     font-size: 15px;
-    background: transparent;
-    color: var(--text);
+    transition: all 0.3s ease;
 }
 
 .form-box button {
     padding: 12px;
     border-radius: 10px;
     border: none;
-    background: var(--primary);
+    background: #004aad;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -152,21 +116,16 @@ h2 {
     transform: translateY(-2px);
 }
 
-/* =====================
-   RESULT BOX
-===================== */
+/* RESULT BOX */
 .result-box {
     margin-top: 30px;
     padding: 25px;
     border-radius: 14px;
-    background: linear-gradient(135deg, #f8faff, var(--card));
-    border-left: 6px solid var(--primary);
+    background: #f8faff;
+    border-left: 6px solid #004aad;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    animation: fadeUp 0.5s ease;
-}
-
-body.dark .result-box {
-    background: #222;
+    animation: fadeUp 0.6s ease;
+    transition: background 0.3s, color 0.3s;
 }
 
 .result-box h3 {
@@ -179,9 +138,7 @@ body.dark .result-box {
     margin: 6px 0;
 }
 
-/* =====================
-   HOME TOOLS
-===================== */
+/* HOME TOOLS */
 .tools {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -198,13 +155,9 @@ body.dark .result-box {
     transition: all 0.3s ease;
 }
 
-body.dark .tool {
-    background: #2a2a2a;
-}
-
 .tool a {
     text-decoration: none;
-    color: var(--primary);
+    color: #004aad;
 }
 
 .tool:hover {
@@ -212,19 +165,15 @@ body.dark .tool {
     box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
-/* =====================
-   FOOTER
-===================== */
+/* FOOTER */
 footer {
     text-align: center;
     padding: 15px;
-    color: #777;
+    color: #666;
     font-size: 14px;
 }
 
-/* =====================
-   ANIMATION
-===================== */
+/* ANIMATION */
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -236,16 +185,7 @@ footer {
     }
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
-@media (min-width: 768px) {
-    .header-inner {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
+/* MOBILE */
 @media (max-width: 600px) {
     header h1 {
         font-size: 22px;
@@ -255,4 +195,27 @@ footer {
         margin: 15px;
         padding: 20px;
     }
+}
+
+/* DARK MODE */
+body.dark {
+    background: #121212;
+    color: #eee;
+}
+
+body.dark .container {
+    background: #1e1e1e;
+}
+
+body.dark .tool {
+    background: #2a2a2a;
+}
+
+body.dark .result-box {
+    background: #222;
+    border-left: 6px solid #4da3ff;
+}
+
+body.dark header {
+    background: linear-gradient(135deg, #000428, #004e92);
 }
