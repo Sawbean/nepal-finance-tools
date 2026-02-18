@@ -1,31 +1,38 @@
 {% extends "base.html" %}
-
 {% block title %}Loan Calculator{% endblock %}
 
 {% block content %}
-<h2>Loan Calculator</h2>
-<form method="POST">
-    <label>Total Loan Amount (in Rs)</label>
-    <input type="number" name="principal" placeholder="Enter the full loan amount" required>
 
-    <label>Down Payment (in Rs, optional)</label>
-    <input type="number" name="down_payment" placeholder="Enter down payment if any, else 0">
+<h2>🏦 Loan Calculator</h2>
 
-    <label>Annual Interest Rate (%)</label>
-    <input type="number" name="rate" step="0.01" placeholder="Example: 10 for 10%" required>
-
-    <label>Loan Tenure (in Years)</label>
-    <input type="number" name="years" placeholder="Number of years to repay" required>
-
-    <input type="submit" value="Calculate EMI">
+<form method="POST" class="form-box">
+    <input type="number" name="principal" placeholder="Total Loan Amount (Rs)" value="{{ principal or '' }}" required>
+    <input type="number" name="down_payment" placeholder="Down Payment (optional)" value="{{ down_payment or '' }}">
+    <input type="number" step="0.01" name="rate" placeholder="Interest Rate (%)" value="{{ rate or '' }}" required>
+    <input type="number" name="years" placeholder="Loan Duration (Years)" value="{{ years or '' }}" required>
+    <button type="submit">Calculate</button>
 </form>
 
 {% if emi %}
-<div class="result">
-    <p><strong>Loan Amount after Down Payment:</strong> Rs {{ principal_after_down }}</p>
-    <p><strong>Monthly EMI:</strong> Rs {{ emi }}</p>
-    <p><strong>Total Payment:</strong> Rs {{ total_payment }}</p>
-    <p><strong>Total Interest Paid:</strong> Rs {{ total_interest }}</p>
+<div class="result-box">
+    <h3>📊 Loan Summary</h3>
+
+    <div class="input-summary">
+        <p><strong>Loan Amount:</strong> Rs. {{ principal }}</p>
+        <p><strong>Down Payment:</strong> Rs. {{ down_payment or 0 }}</p>
+        <p><strong>Amount after Down Payment:</strong> Rs. {{ principal_after_down }}</p>
+        <p><strong>Interest Rate:</strong> {{ rate }}%</p>
+        <p><strong>Duration:</strong> {{ years }} years</p>
+    </div>
+
+    <hr>
+
+    <div class="calculation-result">
+        <p><strong>Monthly EMI:</strong> Rs. {{ emi }}</p>
+        <p><strong>Total Payment:</strong> Rs. {{ total_payment }}</p>
+        <p><strong>Total Interest:</strong> Rs. {{ total_interest }}</p>
+    </div>
 </div>
 {% endif %}
+
 {% endblock %}

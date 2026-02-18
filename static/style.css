@@ -150,3 +150,65 @@ footer {
         flex-direction: column;
     }
 }
+
+.result-box {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f8f9fa;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+
+.form-box {
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-box input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.form-box button {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    cursor: pointer;
+}
+
+.form-box button:hover {
+    background-color: #084298;
+}
+
+.result-box {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f8f9fa;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.input-summary p,
+.calculation-result p {
+    margin: 6px 0;
+}
+
+.result-box h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.input-summary,
+.calculation-result {
+    margin: 10px 0;
+}
+

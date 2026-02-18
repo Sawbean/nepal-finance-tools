@@ -1,25 +1,33 @@
 {% extends "base.html" %}
-
 {% block title %}Fuel Cost Calculator{% endblock %}
 
 {% block content %}
-<h2>Fuel Cost Calculator</h2>
-<form method="POST">
-    <label>Distance to Travel (km)</label>
-    <input type="number" name="distance" placeholder="Enter distance in km" required>
 
-    <label>Vehicle Mileage (km per liter)</label>
-    <input type="number" name="mileage" placeholder="How many km your vehicle runs per liter" required>
+<h2>⛽ Fuel Cost Calculator</h2>
 
-    <label>Fuel Price (Rs per liter)</label>
-    <input type="number" name="price" placeholder="Current fuel price per liter" required>
-
-    <input type="submit" value="Calculate Fuel Cost">
+<form method="POST" class="form-box">
+    <input type="number" name="distance" placeholder="Distance to Travel (km)" value="{{ distance or '' }}" required>
+    <input type="number" name="mileage" placeholder="Vehicle Mileage (km/l)" value="{{ mileage or '' }}" required>
+    <input type="number" name="price" placeholder="Fuel Price (Rs per liter)" value="{{ price or '' }}" required>
+    <button type="submit">Calculate</button>
 </form>
 
 {% if total_cost %}
-<div class="result">
-    <p><strong>Total Fuel Cost:</strong> Rs {{ total_cost }}</p>
+<div class="result-box">
+    <h3>📊 Fuel Cost Summary</h3>
+
+    <div class="input-summary">
+        <p><strong>Distance:</strong> {{ distance }} km</p>
+        <p><strong>Mileage:</strong> {{ mileage }} km/l</p>
+        <p><strong>Fuel Price:</strong> Rs. {{ price }}</p>
+    </div>
+
+    <hr>
+
+    <div class="calculation-result">
+        <p><strong>Total Fuel Cost:</strong> Rs. {{ total_cost }}</p>
+    </div>
 </div>
 {% endif %}
+
 {% endblock %}
