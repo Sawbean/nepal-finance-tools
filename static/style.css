@@ -38,20 +38,25 @@ h1, h2 {
 
 /* Navigation links */
 nav {
-    text-align: center;
-    margin-bottom: 25px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
 }
 
+/* Navigation links */
 nav a {
-    margin: 0 15px;
     text-decoration: none;
-    color: white;   /* change this */
+    color: white;
     font-weight: bold;
-    transition: 0.3s;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 nav a:hover {
-    color: #ffd700;   /* gold hover effect */
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffd700;
 }
 
 /* Forms */
