@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -6,16 +6,10 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-from flask import request
-
 @app.route("/emi", methods=["GET", "POST"])
 def emi():
-    emi_value = None
-    total_payment = None
-    total_interest = None
-    principal = None
-    rate = None
-    years = None
+    emi_value = total_payment = total_interest = None
+    principal = rate = years = None
 
     if request.method == "POST":
         principal = float(request.form["principal"])
@@ -42,16 +36,11 @@ def emi():
         rate=rate,
         years=years
     )
+
 @app.route("/loan", methods=["GET", "POST"])
 def loan():
-    emi_value = None
-    total_payment = None
-    total_interest = None
-    principal = None
-    down_payment = None
-    principal_after_down = None
-    rate = None
-    years = None
+    emi_value = total_payment = total_interest = None
+    principal = down_payment = principal_after_down = rate = years = None
 
     if request.method == "POST":
         principal = float(request.form["principal"])
@@ -85,10 +74,7 @@ def loan():
 
 @app.route("/fuel", methods=["GET", "POST"])
 def fuel():
-    total_cost = None
-    distance = None
-    mileage = None
-    price = None
+    total_cost = distance = mileage = price = None
 
     if request.method == "POST":
         distance = float(request.form["distance"])
@@ -103,9 +89,6 @@ def fuel():
         mileage=mileage,
         price=price
     )
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
